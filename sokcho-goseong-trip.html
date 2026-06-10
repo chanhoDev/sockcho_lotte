@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>속초 · 고성 2박 3일 가족 여정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea-deep:#0C3A44;
+    --sea:#17707E;
+    --sea-soft:#4FA3AE;
+    --mist:#E7EFEE;
+    --paper:#FBFAF6;
+    --coral:#EC6A45;
+    --coral-soft:#F6C9B8;
+    --gold:#B8862E;
+    --ink:#15292C;
+    --muted:#5E7173;
+    --line:#D5DEDD;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--mist);
+    color:var(--ink);
+    font-family:"Gowun Dodum",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;background:var(--paper);
+    box-shadow:0 1px 40px rgba(12,58,68,.10);min-height:100vh;}
+
+  /* ---- Header: dawn over the East Sea ---- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    padding:54px 30px 40px;
+    background:
+      radial-gradient(120% 90% at 78% 8%, rgba(255,209,150,.95) 0%, rgba(236,106,69,.55) 26%, rgba(23,112,126,0) 60%),
+      linear-gradient(180deg,#1d6675 0%,#0C3A44 100%);
+  }
+  .sun{position:absolute;top:34px;right:46px;width:74px;height:74px;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%,#FFF1D4 0%,#FFD18C 55%,#F2A35E 100%);
+    box-shadow:0 0 50px 14px rgba(255,196,128,.55);}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:30px;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:rgba(255,255,255,.82);margin:0 0 14px;}
+  .hero h1{font-family:"Gowun Batang",serif;font-weight:700;
+    font-size:clamp(30px,7vw,46px);line-height:1.12;margin:0;letter-spacing:-.01em;}
+  .hero .when{margin:10px 0 0;font-size:15px;color:rgba(255,255,255,.9);}
+  .route{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;}
+  .route .stop{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+    padding:6px 12px;border-radius:999px;color:#fff;}
+  .route .arr{color:var(--coral-soft);}
+
+  /* ---- meta strip ---- */
+  .meta{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line);}
+  .meta div{flex:1 1 33%;min-width:120px;padding:16px 18px;border-right:1px solid var(--line);}
+  .meta div:last-child{border-right:none;}
+  .meta .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);}
+  .meta .v{font-size:16px;margin-top:3px;}
+
+  /* ---- timeline ---- */
+  .timeline{position:relative;padding:34px 30px 8px;}
+  .timeline::before{content:"";position:absolute;top:46px;bottom:34px;left:46px;width:2px;
+    background:linear-gradient(180deg,var(--sea) 0%,var(--sea-soft) 48%,var(--coral) 100%);}
+  .day{position:relative;padding-left:46px;margin-bottom:38px;}
+  .node{position:absolute;left:-1px;top:3px;width:20px;height:20px;border-radius:50%;
+    background:var(--paper);border:3px solid var(--sea);z-index:2;}
+  .day.g .node{border-color:var(--coral);}
+  .day.mid .node{border-color:var(--sea-soft);}
+
+  .dhead{margin-bottom:14px;}
+  .dtag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;
+    color:var(--sea);font-weight:500;}
+  .day.g .dtag{color:var(--coral);}
+  .dplace{font-family:"Gowun Batang",serif;font-weight:700;font-size:22px;margin:4px 0 2px;}
+  .dtheme{color:var(--muted);font-size:14px;}
+
+  .item{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:13px 0;
+    border-top:1px solid var(--line);}
+  .item:first-of-type{border-top:1px dashed var(--line);}
+  .time{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink);
+    padding-top:2px;white-space:nowrap;}
+  .time.soft{color:var(--muted);}
+  .it{font-size:16px;font-weight:400;}
+  .it strong{font-weight:400;}
+  .desc{color:var(--muted);font-size:14px;margin-top:3px;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+  .tag{font-size:11.5px;font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;
+    padding:3px 9px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;
+    background:#EEF3F2;color:var(--sea-deep);}
+  .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sea-soft);}
+  .tag.swim{background:#FBE9E2;color:#A8462B;}
+  .tag.swim::before{background:var(--coral);}
+  .tag.cafe{background:#F4ECDC;color:#7A5A18;}
+  .tag.cafe::before{background:var(--gold);}
+  .tag.eat{background:#EDEFE8;color:#525B3C;}
+  .tag.eat::before{background:#7E8C56;}
+  .tag.move::before,.tag.rest::before{background:#9AAAA9;}
+  .links{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;}
+  .maplink{font-size:12.5px;text-decoration:none;color:var(--sea);
+    border-bottom:1px solid var(--sea-soft);padding-bottom:1px;}
+  .maplink:hover{color:var(--coral);border-color:var(--coral);}
+  .pick{margin-top:9px;border-left:2px solid var(--coral-soft);padding:4px 0 4px 12px;}
+  .pick .pickrow{font-size:13.5px;padding:2px 0;}
+  .pick a{color:var(--sea);text-decoration:none;border-bottom:1px solid var(--line);}
+  .pick a:hover{color:var(--coral);}
+
+  /* ---- bottom panels ---- */
+  .panels{padding:6px 30px 40px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .card{background:var(--mist);border-radius:14px;padding:18px 20px;}
+  .card h3{font-family:"Gowun Batang",serif;font-size:16px;margin:0 0 10px;font-weight:700;}
+  .card ul{margin:0;padding:0;list-style:none;}
+  .card li{font-size:14px;padding:4px 0;color:var(--ink);position:relative;padding-left:16px;}
+  .card li::before{content:"·";position:absolute;left:2px;color:var(--coral);font-weight:700;}
+  .card.contact li{padding-left:0;display:flex;justify-content:space-between;gap:10px;}
+  .card.contact li::before{display:none;}
+  .card.contact .nm{color:var(--muted);}
+  .card.contact a{color:var(--sea-deep);text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:13px;}
+
+  footer{padding:22px 30px 40px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:12.5px;text-align:center;}
+
+  @media (max-width:560px){
+    .hero{padding:42px 22px 34px;}
+    .sun{width:56px;height:56px;top:26px;right:26px;}
+    .timeline{padding:28px 20px 4px;}
+    .timeline::before{left:36px;}
+    .day{padding-left:40px;}
+    .meta div{flex:1 1 50%;}
+    .panels{grid-template-columns:1fr;padding:6px 20px 32px;}
+    .item{grid-template-columns:54px 1fr;gap:10px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .wrap{box-shadow:none;max-width:none;}
+    .maplink,.links{display:none;}
+    .hero{color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="eyebrow">East Sea · Family Trip</p>
+    <h1>속초 · 고성<br>2박 3일 가족 여정</h1>
+    <p class="when">2026. 6. 11 (목) — 6. 13 (토)</p>
+    <div class="route">
+      <span class="stop">롯데리조트 속초</span>
+      <span class="arr">───▶</span>
+      <span class="stop">소노캄 델피노 (고성)</span>
+    </div>
+  </header>
+
+  <section class="meta">
+    <div><div class="k">일정</div><div class="v">2박 3일</div></div>
+    <div><div class="k">인원</div><div class="v">부모님·이모·나 · 4명</div></div>
+    <div><div class="k">이동</div><div class="v">자가용</div></div>
+  </section>
+
+  <section class="timeline">
+
+    <!-- DAY 1 -->
+    <article class="day reveal">
+      <span class="node" aria-hidden="true"></span>
+      <div class="dhead">
+        <div class="dtag">DAY 1 · 6.11 (목)</div>
+        <div class="dplace">롯데리조트 속초</div>
+        <div class="dtheme">도착, 그리고 첫 물놀이</div>
+      </div>
+
+      <div class="item">
+        <div class="time">15:00</div>
+        <div>
+          <div class="it"><strong>체크인</strong></div>
+          <div class="desc">짐 풀고 시설 이용 준비. 워터파크 입장 시 아쿠아슈즈 필수 (샌들·크록스 불가).</div>
+          <div class="links"><a class="maplink" href="https://maps.google.com/?cid=17999899474297561311" target="_blank" rel="noopener">지도에서 보기</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">오후</div>
+        <div>
+          <div class="it"><strong>시설 이용</strong></div>
+          <div class="desc">아버지·나는 워터파크에서 수영, 어머니·이모는 찜질방에서 휴식. 투숙객은 워터파크 30%·찜질방 50% 할인.</div>
+          <div class="tags"><span class="tag swim">수영</span><span class="tag rest">찜질방</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">저녁</div>
+        <div>
+          <div class="it"><strong>매운탕</strong> · 외옹치 / 대포항</div>
+          <div class="desc">리조트에서 차로 5분 거리. 아래 중 한 곳 — 주말 저녁은 대기가 있을 수 있어 방문 전 전화 확인을 권해요.</div>
+          <div class="tags"><span class="tag eat">식사</span></div>
+          <div class="pick">
+            <div class="pickrow">· <a href="https://maps.google.com/?cid=6982932830833416439" target="_blank" rel="noopener">은진네</a> — 외옹치항, 가장 가까움 · 매운탕 평 좋음</div>
+            <div class="pickrow">· <a href="https://maps.google.com/?cid=8666538663405298376" target="_blank" rel="noopener">신해불이횟집</a> — 대포항, 매운탕·회 평 최상 (4.8★)</div>
+            <div class="pickrow">· <a href="https://maps.google.com/?cid=5977484941089375753" target="_blank" rel="noopener">오기네매운탕</a> — 대포항, 인원·양 맞춤 주문 편함</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 2 -->
+    <article class="day mid reveal">
+      <span class="node" aria-hidden="true"></span>
+      <div class="dhead">
+        <div class="dtag">DAY 2 · 6.12 (금)</div>
+        <div class="dplace">속초 → 고성 델피노</div>
+        <div class="dtheme">바다뷰 커피 한 잔, 그리고 이동</div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">아침</div>
+        <div>
+          <div class="it"><strong>객실에서 간단히</strong></div>
+          <div class="desc">가볍게 먹고 여유 있게 체크아웃 준비.</div>
+          <div class="tags"><span class="tag eat">식사</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">오전</div>
+        <div>
+          <div class="it"><strong>체크아웃 → 해안도로 북상</strong></div>
+          <div class="tags"><span class="tag move">이동</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">~12:00</div>
+        <div>
+          <div class="it"><strong>태시트 (TACIT)</strong> · 청간정해변</div>
+          <div class="desc">모래사장 위 회색 벽돌 건물에서 바다가 액자처럼 보이는 카페. 점심은 스킵. (수요일 휴무 — 여행일과 무관)</div>
+          <div class="tags"><span class="tag cafe">카페</span></div>
+          <div class="links"><a class="maplink" href="https://maps.google.com/?cid=3108929892946122109" target="_blank" rel="noopener">지도에서 보기</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time">15:00</div>
+        <div>
+          <div class="it"><strong>델피노 체크인 → 수영</strong></div>
+          <div class="desc">오션플레이(워터파크·온천·스파가 실내로 연결). 인피니티풀은 성인 전용이라 아버지·나 이용 가능. 어머니·이모는 온천·스파에서 휴식.</div>
+          <div class="tags"><span class="tag swim">수영</span><span class="tag rest">스파</span></div>
+          <div class="links"><a class="maplink" href="https://maps.google.com/?cid=6688367483045086399" target="_blank" rel="noopener">지도에서 보기</a></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">저녁</div>
+        <div>
+          <div class="it"><strong>리조트 내에서 해결</strong></div>
+          <div class="tags"><span class="tag eat">식사</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- DAY 3 -->
+    <article class="day g reveal">
+      <span class="node" aria-hidden="true"></span>
+      <div class="dhead">
+        <div class="dtag">DAY 3 · 6.13 (토)</div>
+        <div class="dplace">델피노 → 귀가</div>
+        <div class="dtheme">느긋한 마무리</div>
+      </div>
+
+      <div class="item">
+        <div class="time">07–10</div>
+        <div>
+          <div class="it"><strong>조식</strong> · 셰프스키친 또는 객실</div>
+          <div class="desc">느긋하게 시작. 조식 뷔페(셰프스키친, 성인 43,000원)나 객실에서 간단히, 편한 쪽으로.</div>
+          <div class="tags"><span class="tag eat">식사</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time soft">오전</div>
+        <div>
+          <div class="it"><strong>더엠브로시아</strong> · 소노펠리체 10층</div>
+          <div class="desc">울산바위가 통창으로 들어오는 뷰 카페. 마지막 날 여유 있게 커피 한 잔. 주말엔 일찍 가면 좋은 자리 잡기 수월.</div>
+          <div class="tags"><span class="tag cafe">카페</span><span class="tag rest">휴식</span></div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="time">11:00</div>
+        <div>
+          <div class="it"><strong>체크아웃 → 귀가</strong></div>
+          <div class="tags"><span class="tag move">이동</span></div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="panels">
+    <div class="card reveal">
+      <h3>챙길 것</h3>
+      <ul>
+        <li>수영복 · 아쿠아슈즈 (워터파크 입장 필수)</li>
+        <li>가벼운 외투 — 바닷바람이 쌀쌀할 수 있어요</li>
+        <li>매운탕집 주말 저녁 대기 → 방문 전 전화 확인</li>
+        <li>야외 시설은 날씨 영향 → 출발 전 날씨 체크</li>
+      </ul>
+    </div>
+    <div class="card contact reveal">
+      <h3>연락처</h3>
+      <ul>
+        <li><span class="nm">롯데리조트 속초</span><a href="tel:0336341227">033-634-1227</a></li>
+        <li><span class="nm">소노캄 델피노</span><a href="tel:15884888">1588-4888</a></li>
+        <li><span class="nm">은진네</span><a href="tel:0336363562">033-636-3562</a></li>
+        <li><span class="nm">신해불이횟집</span><a href="tel:01063802776">010-6380-2776</a></li>
+        <li><span class="nm">오기네매운탕</span><a href="tel:0336337422">033-633-7422</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>속초 · 고성 2박 3일 — 가족과 함께 천천히 다녀오세요.</footer>
+</div>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(e){e.classList.add('in');});return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+</body>
+</html>
